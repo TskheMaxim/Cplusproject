@@ -91,7 +91,7 @@ void addbook(){
   
 
   bookTitle.erase(0, bookTitle.find_first_not_of(" "));
-  bookTitle.erase(bookTitle.find_last_not_of(" " +1 ));
+  bookTitle.erase(bookTitle.find_last_not_of(" ") +1 );
 
   authorName.erase(0, authorName.find_first_not_of(" "));
   authorName.erase(authorName.find_last_not_of(" ") +1 );
@@ -117,7 +117,18 @@ void addbook(){
 }
 
 void viewbooks() {
-    cout << "View Books not implemented yet." << endl;
+    if (library.size() == 0){
+      cout<<"There is no books in the library yet";
+    return;
+    }
+    for (int i=0; i<library.size(); i++){
+      cout<<"ID: "<<library[i].bookid<<endl;
+      cout<<"Title: "<<library[i].title<<endl;
+      cout<<"Author: "<<library[i].author<<endl;
+      cout<<"Year: "<<library[i].year<<endl;
+      cout<<"Borrowed: "<<(library[i].isBorrowed ? "Yes" : "No")<<endl;
+      cout<<"--------------------"<<endl;
+    }
 }
 
 void borrowbook() {
